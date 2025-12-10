@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+export const dynamic = 'force-dynamic';
+
 // 模拟质控看板数据
 const generateQualityData = () => {
   // 生成执行质控数据

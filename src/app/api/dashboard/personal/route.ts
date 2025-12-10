@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+export const dynamic = 'force-dynamic';
+
 // 模拟个人看板数据
 const generatePersonalData = (employeeId?: string) => {
   // 模拟员工信息

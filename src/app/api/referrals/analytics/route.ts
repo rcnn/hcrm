@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { ReferralAnalytics } from '@/lib/types/referral';
 
+export const dynamic = 'force-dynamic';
+
 // 获取转诊分析数据
 export async function GET(request: NextRequest) {
   try {

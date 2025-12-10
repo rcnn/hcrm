@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Card, Breadcrumb, message } from 'antd';
 import { HomeOutlined } from '@ant-design/icons';
@@ -8,7 +8,9 @@ import RuleEditor from '@/components/rules/RuleEditor';
 import axios from 'axios';
 import MainLayout from '@/components/layout/MainLayout';
 
-export default function NewRulePage() {
+export const dynamic = 'force-dynamic';
+
+function NewRulePageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [loading, setLoading] = useState(false);
@@ -63,5 +65,13 @@ export default function NewRulePage() {
       </Card>
       </div>
     </MainLayout>
+  );
+}
+
+export default function NewRulePage() {
+  return (
+    <Suspense fallback={<div style={{ padding: 24 }}>加载中...</div>}>
+      <NewRulePageContent />
+    </Suspense>
   );
 }

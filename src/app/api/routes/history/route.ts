@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+export const dynamic = 'force-dynamic';
 // GET /api/rules/history - 获取规则历史
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;

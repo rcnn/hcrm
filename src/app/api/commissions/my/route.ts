@@ -4,6 +4,8 @@ import {
   DepartmentType,
 } from '@/lib/types/referral';
 
+export const dynamic = 'force-dynamic';
+
 // 模拟业绩数据
 const mockCommissions = [];
 

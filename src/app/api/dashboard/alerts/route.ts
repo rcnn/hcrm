@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+export const dynamic = 'force-dynamic';
+
 // 模拟预警数据
 const generateAlertsData = () => {
   const alerts = [

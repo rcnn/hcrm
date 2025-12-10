@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+export const dynamic = 'force-dynamic';
 // Mock聊天记录
 const mockChatRecords: Record<string, any[]> = {
   'C001': [

@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Referral } from '@/lib/types/referral';
 
+export const dynamic = 'force-dynamic';
+
 // 模拟转诊数据存储
 const mockReferrals: Referral[] = [];
 

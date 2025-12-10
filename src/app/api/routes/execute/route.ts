@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { mockRules } from '../../mock-data';
+export const dynamic = 'force-dynamic';
 
 // GET /api/rules/execute - 模拟规则执行
 export async function GET(request: NextRequest) {

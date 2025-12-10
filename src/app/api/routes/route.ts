@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { mockRules } from '../mock-data';
 
+export const dynamic = 'force-dynamic';
+
 // GET /api/rules - 获取规则列表
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;

@@ -3,6 +3,8 @@ import {
   CommissionCalculation,
 } from '@/lib/types/referral';
 
+export const dynamic = 'force-dynamic';
+
 // 获取业绩计算
 export async function GET(request: NextRequest) {
   try {
