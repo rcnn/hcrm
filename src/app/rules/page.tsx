@@ -5,6 +5,7 @@ import { Table, Button, Space, Tag, Card, Select, Input, Modal, message } from '
 import { PlusOutlined, EditOutlined, CopyOutlined, DeleteOutlined, PlayCircleOutlined, AppstoreOutlined, BarChartOutlined } from '@ant-design/icons';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
+import MainLayout from '@/components/layout/MainLayout';
 
 const { Option } = Select;
 const { Search } = Input;
@@ -174,7 +175,8 @@ export default function RulesPage() {
   ];
 
   return (
-    <div style={{ padding: 24 }}>
+    <MainLayout>
+      <div style={{ padding: 24 }}>
       <Card>
         <div style={{ marginBottom: 16, display: 'flex', gap: 16 }}>
           <Select
@@ -237,6 +239,7 @@ export default function RulesPage() {
           }}
         />
       </Card>
-    </div>
+      </div>
+    </MainLayout>
   );
 }

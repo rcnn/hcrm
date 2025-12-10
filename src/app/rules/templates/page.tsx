@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { Card, Breadcrumb, Table, Button, Space, Tag, Input, Select } from 'antd';
 import { HomeOutlined, PlusOutlined, EyeOutlined } from '@ant-design/icons';
 import axios from 'axios';
+import MainLayout from '@/components/layout/MainLayout';
 
 const { Search } = Input;
 const { Option } = Select;
@@ -122,7 +123,8 @@ export default function RuleTemplatesPage() {
   ];
 
   return (
-    <div style={{ padding: 24 }}>
+    <MainLayout>
+      <div style={{ padding: 24 }}>
       <Breadcrumb style={{ marginBottom: 16 }}>
         <Breadcrumb.Item href="/">
           <HomeOutlined />
@@ -166,6 +168,7 @@ export default function RuleTemplatesPage() {
           })}
         />
       </Card>
-    </div>
+      </div>
+    </MainLayout>
   );
 }

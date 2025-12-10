@@ -26,6 +26,7 @@ import {
   SafetyOutlined
 } from '@ant-design/icons';
 import type { ColumnsType } from 'antd/es/table';
+import MainLayout from '@/components/layout/MainLayout';
 
 const { Title, Text } = Typography;
 const { RangePicker } = DatePicker;
@@ -327,7 +328,8 @@ export default function RuleStatisticsPage() {
   };
 
   return (
-    <div style={{ padding: '24px', maxWidth: 1600, margin: '0 auto' }}>
+    <MainLayout>
+      <div style={{ padding: '24px', maxWidth: 1600, margin: '0 auto' }}>
       {/* Header */}
       <Card>
         <Space direction="vertical" size="small" style={{ width: '100%' }}>
@@ -445,6 +447,7 @@ export default function RuleStatisticsPage() {
           }}
         />
       </Card>
-    </div>
+      </div>
+    </MainLayout>
   );
 }

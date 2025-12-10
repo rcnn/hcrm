@@ -21,6 +21,7 @@ export const permissions: Record<string, Permission> = {
   // 规则配置权限
   'rule:view': { id: '11', name: '查看规则', code: 'rule:view', description: '查看规则配置' },
   'rule:edit': { id: '12', name: '编辑规则', code: 'rule:edit', description: '编辑规则配置' },
+  'rules:manage': { id: '16', name: '规则管理', code: 'rules:manage', description: '管理规则配置系统' },
 
   // 业绩管理权限
   'performance:view': { id: '13', name: '查看业绩', code: 'performance:view', description: '查看业绩数据' },
@@ -62,6 +63,7 @@ export const rolePermissions: Record<UserRole, string[]> = {
     'analytics:export',
     'rule:view',
     'rule:edit',
+    'rules:manage',
     'performance:view',
     'performance:manage',
   ],
@@ -71,6 +73,7 @@ export const rolePermissions: Record<UserRole, string[]> = {
     'analytics:view',
     'analytics:export',
     'rule:view',
+    'rules:manage',
     'performance:view',
   ],
   sales: [

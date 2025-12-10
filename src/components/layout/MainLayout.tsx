@@ -24,6 +24,7 @@ import {
   UserOutlined,
   LogoutOutlined,
   SwitcherOutlined,
+  FileTextOutlined,
 } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { useRouter, usePathname } from 'next/navigation';
@@ -91,6 +92,29 @@ export default function MainLayout({ children }: MainLayoutProps) {
             key: '/customers',
             icon: <TeamOutlined />,
             label: '客户档案',
+          },
+        ]
+      : []),
+    ...(hasPermission('rules:manage')
+      ? [
+          {
+            key: 'rules-group',
+            label: '规则配置',
+            icon: <FileTextOutlined />,
+            children: [
+              {
+                key: '/rules',
+                label: '规则列表',
+              },
+              {
+                key: '/rules/templates',
+                label: '规则模板',
+              },
+              {
+                key: '/rules/statistics',
+                label: '执行统计',
+              },
+            ],
           },
         ]
       : []),

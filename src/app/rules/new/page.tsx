@@ -6,6 +6,7 @@ import { Card, Breadcrumb, message } from 'antd';
 import { HomeOutlined } from '@ant-design/icons';
 import RuleEditor from '@/components/rules/RuleEditor';
 import axios from 'axios';
+import MainLayout from '@/components/layout/MainLayout';
 
 export default function NewRulePage() {
   const router = useRouter();
@@ -39,7 +40,8 @@ export default function NewRulePage() {
   };
 
   return (
-    <div style={{ padding: 24 }}>
+    <MainLayout>
+      <div style={{ padding: 24 }}>
       <Breadcrumb style={{ marginBottom: 16 }}>
         <Breadcrumb.Item href="/">
           <HomeOutlined />
@@ -59,6 +61,7 @@ export default function NewRulePage() {
           loading={loading}
         />
       </Card>
-    </div>
+      </div>
+    </MainLayout>
   );
 }
