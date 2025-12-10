@@ -1,0 +1,41 @@
+import { create } from 'zustand';
+import { Customer, CustomerCategory } from '@/lib/types/customer';
+import { mockCustomers, getCustomerById, getCustomersByOwner, searchCustomers } from '@/lib/mock/customers';
+
+interface CustomerState {
+  customers: Customer[];
+  currentCustomer: Customer | null;
+  loading: boolean;
+  fetchCustomers: () => Promise<void>;
+  fetchCustomerById: (id: string) => Promise<void>;
+  searchCustomers: (keyword: string) => void;
+  getCustomersByOwner: (ownerId: string) => Customer[];
+}
+
+export const useCustomerStore = create<CustomerState>((set, get) => ({
+  customers: mockCustomers,
+  currentCustomer: null,
+  loading: false,
+
+  fetchCustomers: async () => {
+    set({ loading: true });
+    // TODO: 调用API获取客户列表
+    await new Promise((resolve) => setTimeout(resolve, 500)); // 模拟API延迟
+    set({ loading: false });
+  },
+
+  fetchCustomerById: async (id: string) => {
+    set({ loading: true });
+    const customer = getCustomerById(id);
+    set({ currentCustomer: customer || null, loading: false });
+  },
+
+  searchCustomers: (keyword: string) => {
+    const results = keyword ? searchCustomers(keyword) : mockCustomers;
+    set({ customers: results });
+  },
+
+  getCustomersByOwner: (ownerId: string) => {
+    return getCustomersByOwner(ownerId);
+  },
+}));

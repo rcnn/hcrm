@@ -1,0 +1,172 @@
+/* 企业微信侧边栏样式 */
+.sidebar {
+  width: 100%;
+  max-width: 400px;
+}
+
+/* 侧边栏内容 */
+.sidebar-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* 客户卡片 */
+.customer-card {
+  border-radius: 4px;
+}
+
+.customer-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.customer-info {
+  flex: 1;
+}
+
+.customer-details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.detail-row {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+}
+
+.detail-label {
+  color: #666;
+  min-width: 80px;
+}
+
+.detail-value {
+  color: #333;
+  font-weight: 500;
+}
+
+/* 任务卡片 */
+.task-card {
+  border-radius: 4px;
+}
+
+/* 脚本弹窗 */
+.script-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1050;
+}
+
+.script-content {
+  background: white;
+  padding: 24px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+  .sidebar-content {
+    gap: 12px;
+  }
+
+  .script-content {
+    width: 95%;
+    padding: 16px;
+  }
+
+  .detail-label {
+    min-width: 70px;
+    font-size: 12px;
+  }
+
+  .detail-value {
+    font-size: 12px;
+  }
+}
+
+/* 触摸优化 */
+.ant-list-item {
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.ant-list-item:hover {
+  background-color: #f5f5f5;
+}
+
+.ant-btn {
+  border-radius: 2px !important;
+}
+
+/* 紧凑样式 */
+.ant-card-small {
+  font-size: 13px;
+}
+
+.ant-card-small .ant-card-head {
+  min-height: 36px;
+  padding: 0 12px;
+}
+
+.ant-card-small .ant-card-body {
+  padding: 12px;
+}
+
+/* 状态标签 */
+.status-tag {
+  border-radius: 2px;
+  font-size: 11px;
+  padding: 0 6px;
+  height: 20px;
+  line-height: 20px;
+}
+
+/* 优先级标签 */
+.priority-high {
+  background-color: #fff2e8;
+  color: #d46b08;
+  border: 1px solid #ffd591;
+}
+
+.priority-medium {
+  background-color: #fff7e6;
+  color: #d46b08;
+  border: 1px solid #ffd591;
+}
+
+.priority-low {
+  background-color: #e6f7ff;
+  color: #1890ff;
+  border: 1px solid #91d5ff;
+}
+
+/* 抽屉样式 */
+.wecom-sidebar .ant-drawer-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.wecom-sidebar .ant-drawer-header-title {
+  color: white;
+}
+
+.wecom-sidebar .ant-drawer-close {
+  color: white;
+}
+
+.wecom-sidebar .ant-drawer-close:hover {
+  color: rgba(255, 255, 255, 0.85);
+}
