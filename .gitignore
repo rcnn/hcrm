@@ -2,3 +2,4 @@
 .claude/
 devspec/
 node_modules/
+.mcp.json
