@@ -172,7 +172,7 @@ export const generateOverviewMockData = (): OverviewDashboardData => {
         rate: Math.random() * 10 + 30,
       })),
     ],
-    hospitalRankings: Array.from({ length: 5 }, (_, i) => ({
+    hospitalRankings: Array.from({ length: 14 }, (_, i) => ({
       rank: i + 1,
       name: `${['总院', '东院', '西院', '南院', '北院'][i]}区`,
       completionRate: Math.floor(Math.random() * 15) + 85,
