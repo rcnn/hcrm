@@ -46,7 +46,8 @@ api.interceptors.response.use(
 // 获取管理驾驶舱概览数据
 export const fetchOverviewDashboard = async (params?: FilterParams): Promise<OverviewDashboardData> => {
   const response = await api.get('/dashboard/overview', { params });
-  return response.data;
+  // API返回 { success, data, timestamp }，拦截器返回{ success, data, timestamp }，需要提取data.data
+  return response.data?.data;
 };
 
 // 获取趋势图表数据
@@ -125,10 +126,11 @@ export const exportReport = async (params: ExportParams): Promise<Blob> => {
 
 // 订阅实时数据更新（Mock WebSocket）
 export const subscribeToRealtimeData = (callback: (data: any) => void) => {
-  // 模拟 WebSocket 连接
-  const interval = setInterval(async () => {
+  // 模拟 WebSocket 连接 - 使用Mock数据保持一致性
+  const interval = setInterval(() => {
     try {
-      const data = await fetchOverviewDashboard();
+      // 生成新的Mock数据（保持实时更新的感觉）
+      const data = generateOverviewMockData();
       callback(data);
     } catch (error) {
       console.error('Failed to fetch realtime data:', error);
@@ -158,11 +160,18 @@ export const generateOverviewMockData = (): OverviewDashboardData => {
       churnRate: Math.random() * 5 + 5,
       diseaseAvgPrice: Math.floor(Math.random() * 1000) + 4000,
     },
-    trends: Array.from({ length: 12 }, (_, i) => ({
-      month: `2024-${String(i + 1).padStart(2, '0')}`,
-      churnRate: Math.random() * 5 + 5,
-      repurchaseRate: Math.random() * 10 + 30,
-    })),
+    trends: [
+      ...Array.from({ length: 12 }, (_, i) => ({
+        month: `2024-${String(i + 1).padStart(2, '0')}`,
+        type: '流失率',
+        rate: Math.random() * 5 + 5,
+      })),
+      ...Array.from({ length: 12 }, (_, i) => ({
+        month: `2024-${String(i + 1).padStart(2, '0')}`,
+        type: '复购率',
+        rate: Math.random() * 10 + 30,
+      })),
+    ],
     hospitalRankings: Array.from({ length: 5 }, (_, i) => ({
       rank: i + 1,
       name: `${['总院', '东院', '西院', '南院', '北院'][i]}区`,

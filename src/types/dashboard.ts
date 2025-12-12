@@ -19,8 +19,8 @@ export interface ProgressIndicator {
 // 趋势数据
 export interface TrendData {
   month: string;
-  churnRate: number;
-  repurchaseRate: number;
+  type: string;
+  rate: number;
 }
 
 // 排名数据

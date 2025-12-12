@@ -39,7 +39,7 @@ const OverviewDashboard: React.FC = () => {
   // 加载数据
   const loadData = async () => {
     try {
-      // 使用Mock数据
+      // 直接使用Mock数据
       const mockData = generateOverviewMockData();
       setData(mockData);
     } catch (error) {
@@ -135,18 +135,6 @@ const OverviewDashboard: React.FC = () => {
     seriesField: 'type',
     color: ['#1890ff', '#52c41a'],
     smooth: true,
-    animation: {
-      appear: {
-        animation: 'path-in',
-        duration: 2000,
-      },
-    },
-    legend: {
-      position: 'top' as const,
-    },
-    tooltip: {
-      showMarkers: true,
-    },
   };
 
   // 饼图配置
@@ -155,11 +143,6 @@ const OverviewDashboard: React.FC = () => {
     angleField: 'value',
     colorField: 'type',
     radius: 0.8,
-    label: {
-      type: 'outer' as const,
-      content: '{name}: {percentage}',
-    },
-    interactions: [{ type: 'element-active' }],
   };
 
   if (loading) {
@@ -304,8 +287,8 @@ const OverviewDashboard: React.FC = () => {
             </Card>
           </Col>
           <Col xs={24} lg={12}>
-            <Card title="全院流量流转" size="small" loading={loading}>
-              <Pie {...pieChartConfig} />
+            <Card title="全院流量流转" size="small" loading={loading || !data}>
+              {data && <Pie {...pieChartConfig} />}
             </Card>
           </Col>
         </Row>

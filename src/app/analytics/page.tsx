@@ -1,50 +1,31 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Row, Col, Card, Table, Progress } from 'antd';
 import { CheckSquareOutlined, ReloadOutlined, UserDeleteOutlined, UserAddOutlined } from '@ant-design/icons';
 import MainLayout from '@/components/layout/MainLayout';
 import StatisticCard from '@/components/common/StatisticCard';
 import { Line, Column } from '@ant-design/charts';
+import { generateOverviewMockData } from '@/services/api/dashboard';
 
 export default function AnalyticsPage() {
-  // 模拟趋势数据
-  const trendData = [
-    { month: '1月', churnRate: 5.2, revisitRate: 82.5 },
-    { month: '2月', churnRate: 4.8, revisitRate: 85.2 },
-    { month: '3月', churnRate: 5.5, revisitRate: 83.8 },
-    { month: '4月', churnRate: 4.2, revisitRate: 87.3 },
-    { month: '5月', churnRate: 3.8, revisitRate: 88.9 },
-    { month: '6月', churnRate: 4.5, revisitRate: 86.5 },
-  ];
+  const [dashboardData, setDashboardData] = useState<any>(null);
 
-  // 模拟院区排名数据
-  const rankingData = [
-    {
-      key: '1',
-      rank: 1,
-      name: '总部医院',
-      hospital: '总部',
-      completionRate: 95,
-      score: 95,
-    },
-    {
-      key: '2',
-      rank: 2,
-      name: '东区医院',
-      hospital: '东区',
-      completionRate: 88,
-      score: 88,
-    },
-    {
-      key: '3',
-      rank: 3,
-      name: '西区医院',
-      hospital: '西区',
-      completionRate: 82,
-      score: 82,
-    },
-  ];
+  // 加载数据
+  useEffect(() => {
+    const mockData = generateOverviewMockData();
+    setDashboardData(mockData);
+  }, []);
+
+  // 院区排名数据
+  const rankingData = (dashboardData?.hospitalRankings || []).map((item: any, index: number) => ({
+    key: String(index + 1),
+    rank: item.rank,
+    name: item.name,
+    hospital: item.name,
+    completionRate: item.completionRate,
+    score: item.completionRate,
+  }));
 
   const rankingColumns = [
     {
@@ -93,16 +74,20 @@ export default function AnalyticsPage() {
   ];
 
   const lineConfig = {
-    data: trendData,
+    data: dashboardData?.trends || [],
     xField: 'month',
     yField: 'rate',
     seriesField: 'type',
+    color: ['#1890ff', '#52c41a'],
     smooth: true,
     animation: {
       appear: {
         animation: 'path-in',
         duration: 2000,
       },
+    },
+    legend: {
+      position: 'top' as const,
     },
   };
 
@@ -115,7 +100,7 @@ export default function AnalyticsPage() {
           <Col xs={24} sm={12} lg={6}>
             <StatisticCard
               title="角塑换片率"
-              value={85}
+              value={Math.round((dashboardData?.progressIndicators?.replacementRate || 0))}
               suffix="%"
               prefix={<CheckSquareOutlined style={{ color: '#1890ff' }} />}
               trend={5}
@@ -124,7 +109,7 @@ export default function AnalyticsPage() {
           <Col xs={24} sm={12} lg={6}>
             <StatisticCard
               title="复查到院率"
-              value={88}
+              value={Math.round((dashboardData?.progressIndicators?.revisitRate || 0))}
               suffix="%"
               prefix={<ReloadOutlined style={{ color: '#52c41a' }} />}
               trend={3}
@@ -133,7 +118,7 @@ export default function AnalyticsPage() {
           <Col xs={24} sm={12} lg={6}>
             <StatisticCard
               title="流失率"
-              value={4.5}
+              value={Number(((dashboardData?.progressIndicators?.churnRate || 0)).toFixed(1))}
               suffix="%"
               prefix={<UserDeleteOutlined style={{ color: '#faad14' }} />}
               trend={-2}
@@ -142,7 +127,7 @@ export default function AnalyticsPage() {
           <Col xs={24} sm={12} lg={6}>
             <StatisticCard
               title="客单价"
-              value={3500}
+              value={dashboardData?.kpis?.avgOrderValue || 0}
               prefix={<UserAddOutlined style={{ color: '#722ed1' }} />}
               trend={8}
             />
