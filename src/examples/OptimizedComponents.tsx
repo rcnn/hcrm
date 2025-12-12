@@ -235,7 +235,6 @@ export const OptimizedTable: React.FC<OptimizedTableProps> = ({
       columns={columns}
       dataSource={data}
       loading={loading}
-      rowHeight={32}
       pagination={{
         size: 'small',
         showSizeChanger: true,

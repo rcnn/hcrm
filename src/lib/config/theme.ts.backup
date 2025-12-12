@@ -4,16 +4,16 @@ import { theme } from 'antd';
 export const medicalTheme = {
   token: {
     // 颜色系统 - 医疗专业配色
-    colorPrimary: '#1677ff',     // 医疗蓝
-    colorSuccess: '#52c41a',     // 成功绿
-    colorWarning: '#fa8c16',     // 警告橙
-    colorError: '#f5222d',       // 错误红
+    colorPrimary: '#1677ff',     // 医疗蓝 - 更专业的蓝色
+    colorSuccess: '#52c41a',     // 成功绿 - 已完成、已接诊
+    colorWarning: '#fa8c16',     // 警告橙 - 待处理、进行中
+    colorError: '#f5222d',       // 错误红 - 危急值、紧急状态
     colorInfo: '#1677ff',        // 信息蓝
     colorTextBase: '#262626',    // 主文字色
     colorBgBase: '#ffffff',      // 主背景色
 
     // 医疗场景语义化颜色
-    colorCritical: '#a8071a',    // 危急值
+    colorCritical: '#a8071a',    // 危急值 - 更深的红色
     colorPending: '#faad14',     // 待处理
     colorCompleted: '#52c41a',   // 已完成
     colorInProgress: '#1890ff',  // 进行中
@@ -73,12 +73,16 @@ export const medicalTheme = {
       headerColor: '#262626',
       headerSortActiveBg: '#f0f0f0',
       headerSortHoverBg: '#f5f5f5',
+      headerCellPadding: '8px 8px',
+      cellPadding: '6px 8px',
       headerSortActiveSortStateBg: '#e6f7ff',
     },
 
     // 标签组件 - 方形医疗标签
     Tag: {
       borderRadius: 2,
+      paddingInline: 6,
+      paddingBlock: 0,
       fontSize: 12,
       lineHeight: 20,
       fontWeight: 400,
@@ -92,6 +96,9 @@ export const medicalTheme = {
       controlHeightLG: 40,
       fontSize: 14,
       fontWeight: 400,
+      paddingInline: 15,
+      paddingInlineSM: 8,
+      paddingInlineLG: 24,
     },
 
     // 卡片组件 - 清晰边界
@@ -101,6 +108,7 @@ export const medicalTheme = {
       paddingLG: 16,
       headerBg: 'transparent',
       headerHeight: 48,
+      headerPadding: '12px 16px',
       extraColor: '#8c8c8c',
     },
 
@@ -109,6 +117,9 @@ export const medicalTheme = {
       borderRadius: 2,
       controlHeight: 32,
       fontSize: 14,
+      paddingInline: 11,
+      paddingInlineSM: 7,
+      paddingInlineLG: 15,
     },
 
     // 选择器组件
@@ -123,13 +134,20 @@ export const medicalTheme = {
     // 菜单组件
     Menu: {
       itemBorderRadius: 2,
+      itemMarginInline: 4,
+      itemMarginBlock: 1,
       itemHeight: 36,
+      itemInlineMargin: 4,
+      itemMarginTop: 2,
+      itemMarginBottom: 2,
     },
 
     // 列表组件
-    // 列表组件
     List: {
-      headerBg: '#fafafa',
+      itemPadding: '8px 12px',
+      headerPadding: '8px 12px',
+      footerPadding: '8px 12px',
+      rowGutter: 8,
     },
 
     // 进度条组件
@@ -143,18 +161,23 @@ export const medicalTheme = {
     // 徽章组件
     Badge: {
       fontSize: 12,
+      paddingInline: 6,
       textFontSize: 12,
     },
 
     // 警告提示组件
     Alert: {
       borderRadius: 2,
+      paddingContentVerticalLG: 12,
+      paddingContentHorizontalLG: 16,
       fontSize: 14,
     },
 
     // 通知提示组件
     Notification: {
       borderRadius: 2,
+      paddingHorizontal: 16,
+      paddingVertical: 12,
     },
 
     // 抽屉组件
@@ -166,6 +189,7 @@ export const medicalTheme = {
     // 模态框组件
     Modal: {
       borderRadius: 2,
+      paddingContentHorizontalLG: 24,
       headerBg: '#fafafa',
     },
 
